@@ -1,0 +1,24 @@
+
+C:\kafka_2.12-3.9.0\bin\windows\zookeeper-server-start.bat C:\kafka_2.12-3.9.0\config\zookeeper.properties
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-server-start.bat C:\kafka_2.12-3.9.0\config\server.properties
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic kaneki
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic kaneki
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-console-consumer.bat --topic kaneki --bootstrap-server localhost:9092 --from-beginning
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic kaneki 
+
+C:\kafka_2.12-3.9.0\bin\windows\zookeeper-server-stop.bat .\config\zookeeper.properties
+
+C:\kafka_2.12-3.9.0\bin\windows\kafka-server-stop.bat .\config\server.properties
+
+
+scp  -r .\kafka* exouser@149.165.172.32:/exouser/home
+
+./bin/kafka-console-producer.sh --topic your_topic_name --bootstrap-server localhost:9092
+./bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic your_topic_name 
